@@ -1,0 +1,152 @@
+.terminal {
+  width: 100vw;
+  height: 100vh;
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+}
+
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  background-color: #000;
+  color: #33ff00;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.5rem;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 0 100px rgba(0, 255, 0, 0.4), inset 0 0 50px rgba(0, 255, 0, 0.2),
+    0 0 10px rgba(0, 255, 0, 0.1);
+}
+
+.screen::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(ellipse at center, rgba(0, 255, 0, 0.1), rgba(0, 0, 0, 1));
+  z-index: 0;
+}
+
+.screen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.05) 1px,
+    rgba(0, 0, 0, 0.05) 1px,
+    rgba(0, 0, 0, 0.05) 3px
+  );
+  z-index: 2;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.caret {
+  display: inline-block;
+  background-color: #33ff00;
+  width: 10px;
+  height: 21px;
+  animation: blink 1s infinite;
+  vertical-align: bottom;
+}
+
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(0, 0, 0, 0.3) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  opacity: 0.1;
+  animation: scanline 5s linear infinite;
+}
+
+.noise {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.05) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.05) 50%,
+      rgba(0, 0, 0, 0.05) 75%,
+      transparent 75%,
+      transparent
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.05) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.05) 50%,
+      rgba(0, 0, 0, 0.05) 75%,
+      transparent 75%,
+      transparent
+    );
+  background-size: 4px 4px;
+  z-index: 4;
+  pointer-events: none;
+  animation: noise-animation 0.2s steps(7) infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes noise-animation {
+  0% {
+    clip-path: inset(0 0 100% 0);
+  }
+  25% {
+    clip-path: inset(25% 0 75% 0);
+  }
+  50% {
+    clip-path: inset(50% 0 50% 0);
+  }
+  75% {
+    clip-path: inset(75% 0 25% 0);
+  }
+  100% {
+    clip-path: inset(100% 0 0 0);
+  }
+}
