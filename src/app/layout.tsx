@@ -15,11 +15,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Terminal",
     description: "LLM Terminal",
-    url: "https://playground-deepcogito.vercel.app/",
+    url: "https://llm-terminal.vercel.app/",
     siteName: "Terminal",
     images: [
       {
-        url: "https://playground-deepcogito.vercel.app/OGImage.png",
+        url: "https://llm-terminal.vercel.app/OGImage.png",
         width: 1200,
         height: 630,
         alt: "Terminal",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description: "LLM Terminal",
     images: [
       {
-        url: "https://playground-deepcogito.vercel.app/OGImage.png",
+        url: "https://llm-terminal.vercel.app/OGImage.png",
         width: 1200,
         height: 630,
         alt: "Terminal",
