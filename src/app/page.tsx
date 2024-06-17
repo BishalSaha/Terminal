@@ -10,16 +10,14 @@ const Home = () => {
   const { messages, isLoading, input, setInput, handleSubmit } = useChat();
 
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (!isLoading) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        handleSubmit(new Event("submit") as any);
-        setInput("");
-      } else if (e.key.length === 1) {
-        setInput(input + e.key);
-      } else if (e.key === "Backspace") {
-        setInput(input.slice(0, -1));
-      }
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSubmit(new Event("submit") as any);
+      setInput("");
+    } else if (e.key.length === 1) {
+      setInput(input + e.key);
+    } else if (e.key === "Backspace") {
+      setInput(input.slice(0, -1));
     }
   };
 
